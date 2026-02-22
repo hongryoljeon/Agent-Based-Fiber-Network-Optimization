@@ -26,8 +26,9 @@ Optimization is performed using:
 - Modular C++ architecture
 - CMake build system
 
----
 
+
+----
 ## Future Work
 - GPU acceleration (CUDA)
 - Parallel optimization
@@ -35,6 +36,19 @@ Optimization is performed using:
 - Visualization integration
 
 ---
+
+## Author
+
+**Hongryol Jeon**  
+PhD Candidate | Computational Mechanics | Optimization | Soft Materials  
+
+University of Illinois Urbana-Champaign  
+📧 hj41@illinois.edu  
+🔗 GitHub: https://github.com/hongryoljeon
+
+
+-----
+
 
 ## How to Build
 
@@ -45,12 +59,3 @@ cmake ..
 make
 ./spring_optimizer
 
----
-## Project Maintainer
-
-**Hongryol Jeon**  
-PhD Candidate | Computational Mechanics | Optimization | Soft Materials  
-
-University of Illinois Urbana-Champaign  
-📧 hj41@illinois.edu  
-🔗 GitHub: https://github.com/hongryoljeon
