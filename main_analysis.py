@@ -8,12 +8,11 @@ from analysis_engine import analyze_stability_and_moduli
 RADIUS = 0.3
 K_SP = 1.0
 STRAIN_ORIGINAL = 1.0  # Reference strain for your specific model
-STRAIN_NEW = 1.0
 AREA = 1.0             # System Area (L x W)
 
 # Derived model constants based on your Physica proof
 C_VAL_K = K_SP * RADIUS * (1 / (1 + 0.01 * STRAIN_ORIGINAL))
-C_VAL_T = K_SP * RADIUS * (STRAIN_NEW / STRAIN_ORIGINAL)
+C_VAL_T = C_VAL_K
 
 def run_moduli_analysis(ensemble_size=40):
     """
