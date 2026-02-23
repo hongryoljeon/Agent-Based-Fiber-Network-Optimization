@@ -57,3 +57,15 @@ def gradient_numba(move_point, bound_point, e_matrix, C_val):
             grad[idx2, 1] += coeff * dy
             
     return grad.flatten()
+
+
+# physics_engine.py 파일 하단에 추가
+
+def energy_wrapper(flat_node, node_bound_arr, e_matrix, C_val):
+    """scipy.optimize를 위한 Energy 함수 래퍼"""
+    # 1D 배열로 들어오는 노드 좌표를 다시 (N, 2) 형태로 복원해서 전달합니다.
+    return energy_numba(flat_node.reshape(-1, 2), node_bound_arr, e_matrix, C_val)
+
+def gradient_wrapper(flat_node, node_bound_arr, e_matrix, C_val):
+    """scipy.optimize를 위한 Gradient 함수 래퍼"""
+    return gradient_numba(flat_node.reshape(-1, 2), node_bound_arr, e_matrix, C_val)
