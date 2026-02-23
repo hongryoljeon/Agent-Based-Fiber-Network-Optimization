@@ -206,5 +206,7 @@ def run_simulation():
                 save_simulation_data(en, y, f"Limit_Mechanics_{ten_percent:.2f}%_r{radius:.2f}_thr{thr:.4f}", node, node_bound, e)
             y += 1
 
+
 if __name__ == "__main__":
-    run_simulation()
+    config = load_config()
+    run_simulation(config)
