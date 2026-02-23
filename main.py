@@ -12,26 +12,31 @@ from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import yaml
+import argparse
 
 # --- Parameters ---
-def load_config(path="config.yaml"):
+
+def load_config(path):
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"Config file not found: {path}")
     with open(path, "r") as f:
         return yaml.safe_load(f)
 
-config = load_config()
 
-radius = config["radius"]
-num_simulations = config["num_simulations"]
-num_agents = config["num_agents"]
-k_sp = config["k_sp"]
-ten_percent = config["ten_percent"]
-thres = config["thres"]
-thr = config["thr"]
-GTOL = config["GTOL"]
-ensemble_size = config["ensemble_size"]
-C = config["C"]
 
-def run_simulation():
+def run_simulation(config):
+    radius = config["radius"]
+    num_simulations = config["num_simulations"]
+    num_agents = config["num_agents"]
+    k_sp = config["k_sp"]
+    ten_percent = config["ten_percent"]
+    thres = config["thres"]
+    thr = config["thr"]
+    GTOL = config["GTOL"]
+    ensemble_size = config["ensemble_size"]
+    C = config["C"]
+    ten = 1 / (1 + 0.01 * ten_percent)
+    
     original_dir = os.getcwd()
 
     for en in range(ensemble_size):
@@ -188,6 +193,7 @@ def run_simulation():
                                method='L-BFGS-B', jac=gradient_wrapper, options={'gtol': GTOL, 'maxiter': 2000000})
                 node = res.x.reshape(-1, 2).tolist()
                 # 2. 최종 그래디언트 계산 (수렴 확인용)
+                node_bound_arr = np.array(node_bound)
                 final_grad = gradient_numba(res.x.reshape(-1, 2), node_bound_arr, e, C)
     
                 # 3. utils의 함수 호출
@@ -207,6 +213,18 @@ def run_simulation():
             y += 1
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Agent-Based Fiber Network Simulation")
+    parser.add_argument(
+        "--config",
+        type=str,
+        default="config.yaml",
+        help="Path to configuration YAML file"
+    )
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    config = load_config()
+    args = parse_args()
+    config = load_config(args.config)
     run_simulation(config)
