@@ -62,7 +62,19 @@ The framework evaluates mechanics using a rigorous analytical approach:
 * *Note: The C++ source is currently in a private repository for performance tuning.*
 
 ---
+## 🚀 Quick Start
 
+# Clone the repository
+git clone [https://github.com/hongryoljeon/Agent-Based-Fiber-Network-Optimization.git](https://github.com/hongryoljeon/Agent-Based-Fiber-Network-Optimization.git)
+cd Agent-Based-Fiber-Network-Optimization
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run simulation
+python main.py --config configs/default.yaml
+
+---
 ## 🎓 Author
 **Hongryol Jeon** PhD Candidate | Computational Mechanics | UIUC  
 Email: [hj41@illinois.edu](mailto:hj41@illinois.edu)
