@@ -17,11 +17,11 @@ radius = 0.3
 num_simulations = 51
 num_agents = 4
 k_sp = 1
-ten_percent = 0
+ten_percent = 3
 ten = 1 / (1 + 0.01 * ten_percent)
-thres = 1e-8
-thr = 0.01
-GTOL = 1e-9
+thres = 1e-8 # global threshold for segment
+thr = 0.01 ## LS rule
+GTOL = 1e-9 ## tolerance for force
 ensemble_size = 40
 C = 0.009
 
