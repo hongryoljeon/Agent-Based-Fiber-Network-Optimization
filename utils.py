@@ -11,6 +11,7 @@ def get_color(value):
     elif value < 0.03: return 'blue'
     else: return 'purple'
 
+
 def save_simulation_data(en, sim_num, folder_name, node, node_bound, e):
     original_dir = os.getcwd()
     os.makedirs(folder_name, exist_ok=True)
@@ -21,3 +22,27 @@ def save_simulation_data(en, sim_num, folder_name, node, node_bound, e):
     np.savetxt(f"{en:03d}_node_bound.csv", np.array(node_bound), delimiter=",")
     
     os.chdir(original_dir)
+
+
+def check_convergence(res, final_grad, threshold=1e-7):
+    """
+    최적화 결과의 수렴 여부를 진단하고 출력합니다.
+    """
+    max_force = np.max(np.abs(final_grad))
+    mean_force = np.mean(np.abs(final_grad))
+    
+    print("-" * 30)
+    print(f"Optimization Status: {'SUCCESS' if res.success else 'FAILED'}")
+    print(f"Message: {res.message}")
+    print(f"Final Energy: {res.fun:.6e}")
+    print(f"Maximum Force (inf-norm): {max_force:.2e}")
+    print(f"Average Force: {mean_force:.2e}")
+    print(f"Number of Iterations: {res.nit}")
+    
+    if max_force > threshold:
+        print(f"⚠️ WARNING: Convergence threshold ({threshold}) not met!")
+    else:
+        print(f"✅ Success: System reached mechanical equilibrium.")
+    print("-" * 30)
+    
+    return max_force
