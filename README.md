@@ -112,9 +112,17 @@ pip install -r requirements.txt
 python main.py --config configs/default.yaml
 
 
+---
 
+## Technical Focus Areas
 
+- Sparse numerical optimization
+- Analytical derivative implementation
+- Energy-based mechanical modeling
+- Scalable system design for HPC environments
+- Micro-to-macro mechanical controllability
 
+-----
 
 
 ## Author
