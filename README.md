@@ -75,9 +75,9 @@ The design emphasizes separation of physics, optimization logic, and numerical b
 
 ---
 
-### Implementation
+## Implementation
 
-## Python Research Backend (Public)
+1. Python Research Backend (Public)
 
 The current implementation is written in Python using:
 
@@ -87,7 +87,7 @@ The current implementation is written in Python using:
 
 This version prioritizes research clarity, reproducibility, and rapid parameter exploration.
 
-## C++ High-Performance Backend (In Development)
+2. C++ High-Performance Backend (In Development)
 
 To scale simulations to networks with millions of degrees of freedom, a C++ backend is under active development.
 
@@ -102,6 +102,20 @@ Key design elements:
 The backend architecture is designed for performance-critical large-scale simulations.
 
 ---
+
+## Installation
+pip install -r requirements.txt
+
+----
+
+## Example Usage
+python main.py --config configs/default.yaml
+
+
+
+
+
+
 
 ## Author
 **Hongryol Jeon** PhD Candidate | Computational Mechanics | Optimization | Soft Materials  
