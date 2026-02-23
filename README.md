@@ -61,17 +61,25 @@ E_total = E_elastic + Phi_constraints
 The optimization pipeline is modular:
 
 1. Agent Construction – Local rule-based fiber deposition
-
 2. Energy Assembly – Aggregation of elastic and constraint potentials
-
 3. Gradient/Hessian Module – Analytical sparse derivative computation
-
 4. Optimization Engine – L-BFGS-B constrained minimization
-
 5. Mechanical Evaluation – Virtual deformation to extract G and K
 
 
 The design emphasizes separation of physics, optimization logic, and numerical backend.
+
+---
+
+## Simulation Workflow
+
+Each simulation cycle consists of:
+
+1. Agent-based fiber deposition under geometric constraints
+2. Topological intersection handling and segment subdivision
+3. Energy-based relaxation via L-BFGS-B
+4. Mechanical evaluation under virtual deformation
+5. Ensemble averaging for statistical validation
 
 ---
 
