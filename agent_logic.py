@@ -31,7 +31,7 @@ def calculate_distance(p1, p2):
 
 def e_calculate_distance(line, bound_point, move_point):
     """
-    matrix 형태의 line 정보를 받아 실제 좌표 상의 거리를 계산합니다.
+    calculate real distance
     """
     # 시작점 좌표 결정
     if line[0] > -0.9:
