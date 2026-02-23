@@ -11,19 +11,25 @@ from shapely.geometry import LineString
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import yaml
 
 # --- Parameters ---
-radius = 0.3
-num_simulations = 51
-num_agents = 4
-k_sp = 1
-ten_percent = 3
-ten = 1 / (1 + 0.01 * ten_percent)
-thres = 1e-8 # global threshold for segment
-thr = 0.01 ## LS rule
-GTOL = 1e-9 ## tolerance for force
-ensemble_size = 40
-C = 0.009
+def load_config(path="config.yaml"):
+    with open(path, "r") as f:
+        return yaml.safe_load(f)
+
+config = load_config()
+
+radius = config["radius"]
+num_simulations = config["num_simulations"]
+num_agents = config["num_agents"]
+k_sp = config["k_sp"]
+ten_percent = config["ten_percent"]
+thres = config["thres"]
+thr = config["thr"]
+GTOL = config["GTOL"]
+ensemble_size = config["ensemble_size"]
+C = config["C"]
 
 def run_simulation():
     original_dir = os.getcwd()
