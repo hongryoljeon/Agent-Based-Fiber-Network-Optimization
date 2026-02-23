@@ -9,9 +9,9 @@ Inspired by the collective construction of **Tent Caterpillars**, we model cater
 
 ## 🔬 Research Motivation & Core Question
 Biological systems like bird nests or caterpillar tents achieve structural integrity without a central blueprint.
-**Core Question:** Can we program the macro-scale elastic properties of a material by only tuning the micro-scale deposition rules of autonomous agents?
+**Core Question:** Can we program global mechanical properties of a material by only tuning the local deposition rules of autonomous agents?
 
-We investigate how agent parameters control:
+We investigate how parameters of local deposition rules by agents control:
 * **Radius of Reach ($R$):** Spatial interaction limit.
 * **Limiting Segment ($LS$):** Geometric constraint on fiber length.
 * **Preset Strain ($P$):** Initial mechanical tension.
