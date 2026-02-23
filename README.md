@@ -13,7 +13,7 @@ Biological systems like bird nests or caterpillar tents achieve structural integ
 
 We investigate how parameters of local deposition rules by agents control:
 * **Radius of Reach ($R$):** Spatial interaction limit.
-* **Limiting Segment ($LS$):** Geometric constraint on fiber length.
+* **Limiting Segment ($LS$):** Geometric constraint on fiber length(to avoid small segments).
 * **Preset Strain ($P$):** Initial mechanical tension.
 
 ---
