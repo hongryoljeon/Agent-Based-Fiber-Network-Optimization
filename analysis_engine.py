@@ -3,18 +3,7 @@ from scipy.sparse import csr_matrix, eye
 from scipy.sparse.linalg import spsolve
 import pandas as pd
 
-# --- 1. Parameters ---
-radius = 0.3
-k_sp = 1.0
-strain_original = 1.0
-strain_new = strain_original
 
-# Using your specific model constants
-C_val_k = k_sp * radius * 1/(1+0.01*strain_original)
-C_val_T = k_sp * radius * strain_new/strain_original
-
-Area = 1.0 
-center = np.array([0.5, 0.5])
 
 # --- 2. Core Function: 100% Analytical Derivative Implementation ---
 def analyze_stability_and_moduli(move_point, bound_point, e_mat, C_k, C_T, area):
