@@ -5,7 +5,7 @@ import pandas as pd
 
 
 
-# --- 2. Core Function: 100% Analytical Derivative Implementation ---
+# --- Function to calculate bulk & shear moduli: 100% Analytical Derivative Implementation ---
 def analyze_stability_and_moduli(move_point, bound_point, e_mat, C_k, C_T, area):
     num_movable = move_point.shape[0]
     rows, cols, data = [], [], []
