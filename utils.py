@@ -26,7 +26,7 @@ def save_simulation_data(en, sim_num, folder_name, node, node_bound, e):
 
 def check_convergence(res, final_grad, threshold=1e-7):
     """
-    최적화 결과의 수렴 여부를 진단하고 출력합니다.
+    check convergence of force and return the maximum value of the force
     """
     max_force = np.max(np.abs(final_grad))
     mean_force = np.mean(np.abs(final_grad))
