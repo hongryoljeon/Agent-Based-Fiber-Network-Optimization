@@ -27,3 +27,22 @@ def choose_intersection_randomly(intersections):
 
 def calculate_distance(p1, p2):
     return math.sqrt((p2[0] - p1[0])**2 + (p2[1] - p1[1])**2)
+
+
+def e_calculate_distance(line, bound_point, move_point):
+    """
+    matrix 형태의 line 정보를 받아 실제 좌표 상의 거리를 계산합니다.
+    """
+    # 시작점 좌표 결정
+    if line[0] > -0.9:
+        line_start = bound_point[int(line[0])]
+    else:
+        line_start = move_point[int(line[1])]
+
+    # 끝점 좌표 결정
+    if line[2] > -0.9:
+        line_end = bound_point[int(line[2])]
+    else:
+        line_end = move_point[int(line[3])]
+
+    return math.sqrt((line_end[0] - line_start[0])**2 + (line_end[1] - line_start[1])**2)
