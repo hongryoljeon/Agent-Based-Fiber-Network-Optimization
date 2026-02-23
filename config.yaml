@@ -1,0 +1,10 @@
+radius: 0.3
+num_simulations: 51
+num_agents: 4
+k_sp: 1
+ten_percent: 3
+thres: 1e-8
+thr: 0.01
+GTOL: 1e-9
+ensemble_size: 40
+C: 0.009
