@@ -41,12 +41,14 @@ The following results demonstrate the relationship between agent-defined paramet
 ### 1. Influence of Limiting Segment Length (LS)
 
 * **Observation:** Increasing the $LS$ value leads to a structural transition in the network. We observe a sensitive region where the global moduli ($G, K$) shift, indicating a trade-off between local agent connectivity and global network stiffness.
+
   <img width="2958" height="2048" alt="image" src="https://github.com/user-attachments/assets/d6df07b8-0da9-4bf7-95f7-4b52b016d940" />
 
 
 ### 2. Influence of Preset Strain (P)
 
 * **Observation:** The moduli show a clear monotonic scaling with the $P$ value. This confirms that the preset strain acts as a primary reinforcement mechanism, effectively stiffening the emergent fiber network.
+
   <img width="2958" height="2048" alt="image" src="https://github.com/user-attachments/assets/a551427a-89d3-4fc9-9867-be85a5c414b1" />
 
 
@@ -112,7 +114,15 @@ The backend architecture is designed for performance-critical large-scale simula
 ---
 
 ## Installation
-pip install -r requirements.txt
+pip install -r requirements.txt  (if using Python backend)
+
+Requirements include:
+- numpy
+- scipy
+- shapely
+- matplotlib
+- pyyaml
+- numba
 
 ----
 
@@ -124,11 +134,9 @@ python main.py --config configs/default.yaml
 
 ## Technical Focus Areas
 
-- Sparse numerical optimization
-- Analytical derivative implementation
-- Energy-based mechanical modeling
-- Scalable system design for HPC environments
-- Micro-to-macro mechanical controllability
+- Sparse Hessian assembly with analytical derivatives
+- Large-scale nonlinear constrained optimization
+- Geometric topology evolution under mechanical relaxation
 
 -----
 
@@ -148,11 +156,4 @@ cmake ..
 make
 ./fiber_optimizer
 ---
-
-
-
-
-
-
-./spring_optimizer
 
