@@ -155,7 +155,9 @@ def run_simulation(config):
                         filt = arr[arr[:,3]==i] if i < len(e)-num_agents else arr[(arr[:,3]==i)|(arr[:,2]==i)]
                         for n in range(num_agents):
                             if i == new_lin_nums[n]: mapo[n] = 1 + len(filt)
-                            elif i > new_lin_nums[n]: mapx[n] += 1 + len(filt)
+                            elif i > new_lin_nums[n]: 
+                                if len(filt) > 0: 
+                                  mapx[n] += 1 + len(filt)
 
                         if len(filt) > 0:
                             delete_array.append(i)
