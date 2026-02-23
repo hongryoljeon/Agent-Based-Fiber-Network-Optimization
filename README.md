@@ -41,15 +41,19 @@ The following results demonstrate the relationship between agent-defined paramet
 ### 1. Influence of Limiting Segment Length (LS)
 
 * **Observation:** Increasing the $LS$ value leads to a structural transition in the network. We observe a sensitive region where the global moduli ($G, K$) shift, indicating a trade-off between local agent connectivity and global network stiffness.
-
+  
+<p align="center">
   <img width="2958" height="2048" alt="image" src="https://github.com/user-attachments/assets/d6df07b8-0da9-4bf7-95f7-4b52b016d940" />
-
+</p>
 
 ### 2. Influence of Preset Strain (P)
 
 * **Observation:** The moduli show a clear monotonic scaling with the $P$ value. This confirms that the preset strain acts as a primary reinforcement mechanism, effectively stiffening the emergent fiber network.
-
-  <img width="2958" height="2048" alt="image" src="https://github.com/user-attachments/assets/a551427a-89d3-4fc9-9867-be85a5c414b1" />
+  
+<p align="center">
+ <img width="2958" height="2048" alt="image" src="https://github.com/user-attachments/assets/a551427a-89d3-4fc9-9867-be85a5c414b1" />
+</p>
+  
 
 
 ---
@@ -58,7 +62,7 @@ The following results demonstrate the relationship between agent-defined paramet
 
 The total energy is defined as:
 
-E_total = E_elastic + Phi_constraints
+$$E_{total} = E_{elastic} + \Phi_{constraints}$$
 
 The optimization pipeline is modular:
 
