@@ -181,6 +181,12 @@ def run_simulation():
                 res = minimize(energy_wrapper, np.array(node).flatten(), args=(np.array(node_bound), e, C),
                                method='L-BFGS-B', jac=gradient_wrapper, options={'gtol': GTOL, 'maxiter': 2000000})
                 node = res.x.reshape(-1, 2).tolist()
+                # 2. 최종 그래디언트 계산 (수렴 확인용)
+                final_grad = gradient_numba(res.x.reshape(-1, 2), node_bound_arr, e, C)
+    
+                # 3. utils의 함수 호출
+                from utils import check_convergence
+                max_f = check_convergence(res, final_grad, threshold=GTOL)
 
             # --- Agent Position Update ---
             for n in range(num_agents):
