@@ -77,7 +77,20 @@ Agent construction → Energy computation →  Optimization → Network Update �
 - CMake-based build system
 
 ----
+## 🛠 Current Implementation & Future Roadmap
 
+### 🐍 Python Implementation (Fully Functional)
+The core logic of the agent-based fiber network optimization is currently implemented in **Python**. It utilizes `SciPy` for robust numerical optimization and `Shapely` for complex geometric operations. This version is ideal for research, visualization, and rapid prototyping of different mechanical parameters.
+
+### 🚀 C++ Porting (In Progress - Meta Application Focus)
+To scale this simulation for massive networks (millions of nodes), I am currently developing a high-performance C++ version. 
+* **Status:** Core physics engine and agent logic have been ported.
+* **Objective:** Implementing **Eigen-based** memory optimization and **LBFGSpp** for production-level performance.
+* **Target:** This C++ backend is designed to handle "meta-scale" applications where real-time simulation and heavy computational throughput are required.
+
+> **Note:** For the current evaluation of the algorithm's mechanical accuracy, please refer to the Python source code. The C++ branch is under active optimization to ensure numerical stability matches the Python baseline.
+
+----
 ## Author
 
 **Hongryol Jeon**  
