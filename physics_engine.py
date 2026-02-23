@@ -6,12 +6,12 @@ def energy_numba(move_point, bound_point, e_matrix, C_val):
     total_energy = 0.0
     compensation = 0.0
     for i in range(e_matrix.shape[0]):
-        # 시작점 설정
+        # starting point
         if e_matrix[i, 0] > -0.9:
             p1 = bound_point[int(e_matrix[i, 0])]
         else:
             p1 = move_point[int(e_matrix[i, 1])]
-        # 끝점 설정
+        # ending point
         if e_matrix[i, 2] > -0.9:
             p2 = bound_point[int(e_matrix[i, 2])]
         else:
@@ -58,8 +58,6 @@ def gradient_numba(move_point, bound_point, e_matrix, C_val):
             
     return grad.flatten()
 
-
-# physics_engine.py 파일 하단에 추가
 
 def energy_wrapper(flat_node, node_bound_arr, e_matrix, C_val):
     """scipy.optimize를 위한 Energy 함수 래퍼"""
