@@ -41,11 +41,13 @@ Based on ensemble simulations ($n=40$), the framework demonstrates precise contr
 ---
 
 ## 🧮 Method & Computation
-The framework evaluates mechanics using a rigorous analytical approach:
-* **Energy Formulation:** $E = \frac{1}{2}k(L-L_0)^2$.
-* **Elastic Moduli Calculation:** Bulk ($K$) and Shear ($G$) moduli are derived using the **Hessian Matrix ($H$)** and non-affine displacement corrections.
-* **Stability:** Eigenvalue analysis of the Hessian ($\lambda > 10^{-3}$) ensures the structural integrity of optimized networks.
-
+The framework evaluates mechanics using a rigorous analytical approach rather than numerical approximation:
+* **Energy Formulation:** The system energy follows a harmonic potential:
+  $$E = \sum \frac{1}{2}k(L-L_0)^2$$
+* **Elastic Moduli Calculation:** Bulk ($K$) and Shear ($G$) moduli are derived by computing the **Hessian Matrix ($H$)** and incorporating non-affine displacement corrections:
+  $$M(K,G) = \frac{1}{A}(M_{affine} - \Xi^T H^{-1} \Xi)$$
+* **Stability Analysis:** Eigenvalue analysis of the Hessian ($\lambda > 10^{-3}$) is performed to ensure the structural integrity and local stability of the optimized networks.
+  
 ---
 
 ## 🛠 Implementation Roadmap
