@@ -1,163 +1,68 @@
 # Agent-Based Fiber Network Optimization
 
-## Overview
-This project develops a modular simulation and optimization framework for studying how local agent-based deposition rules give rise to emergent global mechanical behavior in fiber networks.
+## 🌟 Overview
+This project develops a modular simulation and optimization framework to investigate how **local agent-based deposition rules** give rise to **emergent global mechanical behavior** in fiber networks.
 
-The system combines analytical mechanics, sparse numerical optimization, and agent-based construction to investigate how micro-scale rules program macro-scale elastic properties.
-
-**Core Question:** Can purely local deposition rules be optimized to control global stiffness and mechanical response?
-
-
+Inspired by the collective construction of **Tent Caterpillars**, we model caterpillars as decentralized additive manufacturing agents. This research bridges the gap between biological decentralized construction and autonomous robotic manufacturing.
 
 ---
 
-## Motivation
-Biological and soft material systems often exhibit complex global behavior driven by simple local rules. Understanding this micro-to-macro mapping is critical for:
+## 🔬 Research Motivation & Core Question
+Biological systems like bird nests or caterpillar tents achieve structural integrity without a central blueprint.
+**Core Question:** Can we program the macro-scale elastic properties of a material by only tuning the micro-scale deposition rules of autonomous agents?
 
-- Programmable soft material design
-- Structural optimization under geometric constraints
-- Emergent mechanics in stochastic networks
-
-This framework explores how agent parameters:
-
-- Radius of reach(R)
-- Limiting segment(LS) 
-- Preset strain(P) 
-
-
-influence global properties such as:
-
-- Stress distribution
-- Bulk modulus (K)
-- Shear modulus (G)
-
+We investigate how agent parameters control:
+* **Radius of Reach ($R$):** Spatial interaction limit.
+* **Limiting Segment ($LS$):** Geometric constraint on fiber length.
+* **Preset Strain ($P$):** Initial mechanical tension.
 
 ---
 
-## 📊 Scientific Validation & Analysis
+## 📊 Scientific Validation (Key Results)
 
-The following results demonstrate the relationship between agent-defined parameters and the resulting network's elastic moduli, averaged over **40 ensemble simulations** to ensure statistical significance.
+Based on ensemble simulations ($n=40$), the framework demonstrates precise control over global mechanics:
 
-### 1. Influence of Limiting Segment Length (LS)
+### 1. Control via Limiting Segment (LS)
 
-* **Observation:** Increasing the $LS$ value leads to a structural transition in the network. We observe a sensitive region where the global moduli ($G, K$) shift, indicating a trade-off between local agent connectivity and global network stiffness.
-  
+* **Observation:** We observed a non-monotonic trend where global moduli ($G, K$) are optimized at specific $LS$ values. Tuning $LS$ allows for "programming" the stiffness distribution of the emergent network.
+
 <p align="center">
   <img width="2958" height="2048" alt="image" src="https://github.com/user-attachments/assets/d6df07b8-0da9-4bf7-95f7-4b52b016d940" />
 </p>
 
-### 2. Influence of Preset Strain (P)
 
-* **Observation:** The moduli show a clear monotonic scaling with the $P$ value. This confirms that the preset strain acts as a primary reinforcement mechanism, effectively stiffening the emergent fiber network.
-  
+### 2. Reinforcement via Preset Strain (P)
+
+* **Observation:** Moduli exhibit a clear monotonic scaling with $P$. However, the $G/K$ ratio reveals a transition in the network's structural response, stabilizing as $P$ increases beyond a critical threshold.
+
 <p align="center">
  <img width="2958" height="2048" alt="image" src="https://github.com/user-attachments/assets/a551427a-89d3-4fc9-9867-be85a5c414b1" />
 </p>
-  
+---
 
+## 🧮 Method & Computation
+The framework evaluates mechanics using a rigorous analytical approach:
+* **Energy Formulation:** $E = \frac{1}{2}k(L-L_0)^2$.
+* **Elastic Moduli Calculation:** Bulk ($K$) and Shear ($G$) moduli are derived using the **Hessian Matrix ($H$)** and non-affine displacement corrections.
+* **Stability:** Eigenvalue analysis of the Hessian ($\lambda > 10^{-3}$) ensures the structural integrity of optimized networks.
 
 ---
 
-## System Architecture
+## 🛠 Implementation Roadmap
 
-The total energy is defined as:
+### 1. Python Research Backend (Public)
+* **Optimization:** `SciPy` (L-BFGS-B) for robust energy minimization.
+* **Geometry:** `Shapely` for complex intersection and vision handling.
+* **Performance:** `Numba` JIT compilation for bottleneck functions.
 
-$$E_{total} = E_{elastic} + \Phi_{constraints}$$
-
-The optimization pipeline is modular:
-
-1. Agent Construction – Local rule-based fiber deposition
-2. Energy Assembly – Aggregation of elastic and constraint potentials
-3. Gradient/Hessian Module – Analytical sparse derivative computation
-4. Optimization Engine – L-BFGS-B constrained minimization
-5. Mechanical Evaluation – Virtual deformation to extract G and K
-
-
-The design emphasizes separation of physics, optimization logic, and numerical backend.
+### 2. C++ High-Performance Backend (In Development)
+* **Scaling:** Designed for meta-scale simulations (millions of nodes).
+* **Numerical Backend:** `Eigen` for sparse linear algebra and `LBFGSpp` for high-speed optimization.
+* **HPC Ready:** Compatible with SLURM and CMake.
+* *Note: The C++ source is currently in a private repository for performance tuning.*
 
 ---
 
-## Simulation Workflow
-
-Each simulation cycle consists of:
-
-1. Agent-based fiber deposition under geometric constraints
-2. Topological intersection handling and segment subdivision
-3. Energy-based relaxation via L-BFGS-B
-4. Mechanical evaluation under virtual deformation
-5. Ensemble averaging for statistical validation
-
----
-
-## Implementation
-
-1. Python Research Backend (Public)
-
-The current implementation is written in Python using:
-
-- SciPy (optimization and sparse solvers)
-- Shapely (geometric operations)
-- NumPy (vectorized numerical computation)
-
-This version prioritizes research clarity, reproducibility, and rapid parameter exploration.
-
-2. C++ High-Performance Backend (In Development)
-
-To scale simulations to networks with millions of degrees of freedom, a C++ backend is under active development.
-
-Key design elements:
-
-- Eigen-based sparse linear algebra
-- LBFGSpp integration
-- Memory-efficient adjacency representation
-- SLURM-compatible HPC deployment
-- CMake-based build system
-
-The backend architecture is designed for performance-critical large-scale simulations.
-
----
-
-## Installation
-pip install -r requirements.txt  (if using Python backend)
-
-Requirements include:
-- numpy
-- scipy
-- shapely
-- matplotlib
-- pyyaml
-- numba
-
-----
-
-## Example Usage
-python main.py --config configs/default.yaml
-
-
----
-
-## Technical Focus Areas
-
-- Sparse Hessian assembly with analytical derivatives
-- Large-scale nonlinear constrained optimization
-- Geometric topology evolution under mechanical relaxation
-
------
-
-
-## Author
-**Hongryol Jeon** PhD Candidate | Computational Mechanics | Optimization | Soft Materials  
-University of Illinois Urbana-Champaign  
-📧 [hj41@illinois.edu](mailto:hj41@illinois.edu)  
-🔗 GitHub: [https://github.com/hongryoljeon](https://github.com/hongryoljeon)
-
-## How to Build
-
-```bash
-mkdir build
-cd build
-cmake ..
-make
-./fiber_optimizer
----
-
+## 🎓 Author
+**Hongryol Jeon** PhD Candidate | Computational Mechanics | UIUC  
+Email: [hj41@illinois.edu](mailto:hj41@illinois.edu)
