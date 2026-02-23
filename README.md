@@ -1,23 +1,36 @@
 # Agent-Based Fiber Network Optimization
 
 ## Overview
-This project implements a high-performance framework for energy-based optimization of agent-built fiber networks. Fiber deposition is modeled as a local agent process, where each agent deposits fibers based on geometric constraints and local interaction rules. 
+This project develops a modular simulation and optimization framework for studying how local agent-based deposition rules give rise to emergent global mechanical behavior in fiber networks.
 
-**Key Insight:** Despite purely local deposition rules, the resulting system exhibits global emergent mechanical behavior, which can be tuned for programmable soft material design.
+The system combines analytical mechanics, sparse numerical optimization, and agent-based construction to investigate how micro-scale rules program macro-scale elastic properties.
 
-The framework enables:
-* Analytical gradient computation & Sparse Hessian assembly
-* L-BFGS-B constrained optimization
-* Mechanical property evaluation (Bulk & Shear Moduli)
+**Core Question:** Can purely local deposition rules be optimized to control global stiffness and mechanical response?
+
+
 
 ---
 
 ## Motivation
-Inspired by biological structural formation, understanding how local deposition rules influence global mechanical properties is essential for designing programmable soft materials. In this project, local agent parameters such as **Radius of reach (R)**, **Limiting segment length (LS)**, and **Preset strain (P)** are tuned to control emergent global mechanics including:
-* Stress distribution & Energy landscape
-* Bulk modulus ($K$) & Shear modulus ($G$)
+Biological and soft material systems often exhibit complex global behavior driven by simple local rules. Understanding this micro-to-macro mapping is critical for:
 
-This framework investigates the controllability of global mechanical response through local rule optimization, bridging the gap between micro-scale rules and macro-scale properties.
+- Programmable soft material design
+- Structural optimization under geometric constraints
+- Emergent mechanics in stochastic networks
+
+This framework explores how agent parameters:
+
+- Radius of reach(R)
+- Limiting segment(LS) 
+- Preset strain(P) 
+
+
+influence global properties such as:
+
+- Stress distribution
+- Bulk modulus (K)
+- Shear modulus (G)
+
 
 ---
 
@@ -39,39 +52,54 @@ The following results demonstrate the relationship between agent-defined paramet
 
 ---
 
-## 🛠 Current Implementation & Future Roadmap
+## System Architecture
 
-### 🐍 Python Implementation (Fully Functional)
-The core logic is currently implemented in **Python**, utilizing `SciPy` for robust numerical optimization and `Shapely` for complex geometric operations. This version is optimized for research, visualization, and rapid prototyping of mechanical parameters.
+The total energy is defined as:
 
-### 🚀 C++ Porting (In Progress - Meta Application Focus)
-To scale this simulation for "meta-scale" networks (millions of nodes), I am developing a high-performance C++ version.
-* **Status:** Core physics engine and agent logic have been successfully ported.
-* **Objective:** Implementing **Eigen-based** memory management and **LBFGSpp** for production-level throughput.
-* **Architecture:** Designed for HPC integration with SLURM and CMake-based build systems.
+E_total = E_elastic + Phi_constraints
 
-> **Note:** The C++ backend is currently hosted in a **Private Repository** for advanced performance tuning and proprietary algorithmic optimization. Access can be provided upon request for technical review.
+The optimization pipeline is modular:
 
----
+1. Agent Construction – Local rule-based fiber deposition
 
-## Mathematical Formulation & Architecture
-The total energy of the system is defined as:
-$$E_{total} = E_{elastic} + \Phi_{constraints}$$
+2. Energy Assembly – Aggregation of elastic and constraint potentials
 
-The optimization engine follows a modular architecture:
-1. **Agent Construction:** Local rule-based deposition.
-2. **Energy Computation:** Summation of local potentials.
-3. **Gradient/Hessian Module:** Analytical derivatives for sparse assembly.
-4. **Optimization:** L-BFGS-B solver for energy minimization.
-5. **Evaluation:** Extraction of $G$ and $K$ through virtual deformation.
+3. Gradient/Hessian Module – Analytical sparse derivative computation
+
+4. Optimization Engine – L-BFGS-B constrained minimization
+
+5. Mechanical Evaluation – Virtual deformation to extract G and K
+
+
+The design emphasizes separation of physics, optimization logic, and numerical backend.
 
 ---
 
-## Features
-* **Energy-based mechanical optimization**
-* **Sparse linear algebra implementation** (Analytical derivatives)
-* **Scalable architecture** with modular design
-* **CMake-based build system** for cross-platform deployment
+### Implementation
+
+## Python Research Backend (Public)
+
+The current implementation is written in Python using:
+
+- SciPy (optimization and sparse solvers)
+- Shapely (geometric operations)
+- NumPy (vectorized numerical computation)
+
+This version prioritizes research clarity, reproducibility, and rapid parameter exploration.
+
+## C++ High-Performance Backend (In Development)
+
+To scale simulations to networks with millions of degrees of freedom, a C++ backend is under active development.
+
+Key design elements:
+
+- Eigen-based sparse linear algebra
+- LBFGSpp integration
+- Memory-efficient adjacency representation
+- SLURM-compatible HPC deployment
+- CMake-based build system
+
+The backend architecture is designed for performance-critical large-scale simulations.
 
 ---
 
